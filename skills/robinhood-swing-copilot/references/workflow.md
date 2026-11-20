@@ -60,6 +60,15 @@ pass that file to swing.py. Never retype numbers by hand.
    at least 260. Unwrap the result with `swing.py unwrap`, then run
    `swing.py regime`. In RED, skip to step 9. Manage open positions only
    (REDUCE_ONLY).
+   - **Data gap.** If the latest session's bar is missing or
+     `interpolated: true` (Robinhood sometimes posts the daily bar late),
+     re-fetch once. If it is still missing, fail closed: no signals and no
+     ENTRY cards. Use the web (data-gap check, `web-use.md`) to tell the user
+     how the session closed and whether a later re-run could change the
+     regime. Never build the bar from web or fundamentals numbers.
+   - **Market context.** Search the web for how SPY/QQQ/IWM closed, the main
+     driver and the events coming up (`web-use.md`). Put 2-4 sourced lines in
+     the plan's `## Market context` section. This never changes the regime.
 2. **Screen.** Call `RH:run_scan` on the saved scan named in
    `settings.saved_scan_name`. The scan filters are:
    - price > $10
@@ -82,10 +91,11 @@ pass that file to swing.py. Never retype numbers by hand.
 6. **Earnings.** Call `RH:get_earnings_results` for each setup symbol. Do
    **not** use `get_earnings_calendar`; it can return about 350K characters.
    Record the next report date, or `null` if it is unknown.
-7. **Optional news veto.** For each remaining setup, do at most one web search
-   (`references/web-use.md`). A credible red flag (pending merger, FDA/court
-   date, offering, halt, investigation) is added as `veto_reasons`. The web
-   never adds candidates.
+7. **News check.** Search the web for each remaining setup and each holding,
+   as many searches as needed (`references/web-use.md`). A credible red flag
+   (pending merger, FDA/court date, offering, halt, investigation) is added to
+   a setup as `veto_reasons`, or flagged on a holding in the plan. The web
+   never adds candidates, never raises size, and never unblocks a rule.
 8. **Size and gate.**
    - For each setup, run `swing.py size` with:
      - `entry = trigger`, `cash_price = limit`
