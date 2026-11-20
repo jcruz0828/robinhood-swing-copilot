@@ -1,6 +1,6 @@
 ---
 name: robinhood-swing-copilot
-description: Consent-gated, propose-only swing-trading copilot for a Robinhood agentic (MCP) account. Runs a rules-first trend-pullback strategy (SPY 200-day regime gate, RSI pullback entry, 2xATR stop, 2R target) with all math in scripts/swing.py, circuit breakers, an earnings block, one-card-at-a-time typed approvals ("APPROVE <code>"), a paper-trading simulator, and a private GitHub journal for memory. Use when the user asks to run their swing session, EOD/evening scan, pre-market check, find swing trades, size a position, protect a fill, move a stop to breakeven, check the circuit breaker, step or review the paper account, do a weekly/monthly trading review, or says KILL/HALT. Never places an order without an exact typed approval.
+description: Consent-gated, propose-only swing-trading copilot for a Robinhood agentic (MCP) account. Runs a rules-first trend-pullback strategy (SPY 200-day regime gate, RSI pullback entry, 2xATR stop, 2R target) with all math in scripts/swing.py, circuit breakers, an earnings block, one-card-at-a-time typed approvals (APPROVE plus an 8-character code), a paper-trading simulator, and a private GitHub journal for memory. Use when the user asks to run their swing session, EOD/evening scan, pre-market check, find swing trades, size a position, protect a fill, move a stop to breakeven, check the circuit breaker, step or review the paper account, do a weekly/monthly trading review, or says KILL/HALT. Never places an order without an exact typed approval.
 ---
 
 # Robinhood Swing Copilot

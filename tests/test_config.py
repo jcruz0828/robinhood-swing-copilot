@@ -96,6 +96,7 @@ class TestSkillPackage(unittest.TestCase):
         self.assertIsNotNone(m)
         self.assertEqual(m.group(1), os.path.basename(SKILL))  # Claude app requires folder == name
         self.assertLessEqual(len(m.group(2)), 1024)
+        self.assertNotRegex(m.group(1) + m.group(2), r"[<>]")  # Claude app rejects XML tags in frontmatter
 
     def test_referenced_files_exist(self):
         with open(os.path.join(SKILL, "SKILL.md"), encoding="utf-8") as fh:
