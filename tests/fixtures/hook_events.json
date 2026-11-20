@@ -1,0 +1,14 @@
+{
+  "read_quote": {"tool_name": "mcp__claude_ai_Robinhood__get_equity_quotes", "tool_input": {"symbols": ["SPY"]}, "permission_mode": "default"},
+  "review_order": {"tool_name": "mcp__robinhood-trading__review_equity_order", "tool_input": {"symbol": "AAPL", "side": "buy"}, "permission_mode": "default"},
+  "place_buy": {"tool_name": "mcp__robinhood-trading__place_equity_order", "tool_input": {"symbol": "AAPL", "side": "buy", "quantity": 3, "type": "stop_limit"}, "permission_mode": "default"},
+  "place_sell": {"tool_name": "mcp__claude_ai_Robinhood__place_equity_order", "tool_input": {"symbol": "AAPL", "side": "sell", "quantity": 3}, "permission_mode": "default"},
+  "place_protect": {"tool_name": "mcp__claude_ai_Robinhood__place_advanced_order", "tool_input": {"symbol": "AAPL", "side": "sell", "quantity": 3, "take_profit_limit_price": 210, "stop_loss_stop_price": 190}, "permission_mode": "default"},
+  "cancel": {"tool_name": "mcp__robinhood-trading__cancel_advanced_order", "tool_input": {"order_id": "x"}, "permission_mode": "default"},
+  "place_option": {"tool_name": "mcp__robinhood-trading__place_option_order", "tool_input": {}, "permission_mode": "default"},
+  "place_crypto": {"tool_name": "mcp__claude_ai_Robinhood__place_crypto_order", "tool_input": {}, "permission_mode": "default"},
+  "add_watchlist": {"tool_name": "mcp__robinhood-trading__add_to_watchlist", "tool_input": {"symbol": "AAPL"}, "permission_mode": "default"},
+  "non_robinhood": {"tool_name": "Bash", "tool_input": {"command": "ls"}, "permission_mode": "default"},
+  "headless_place_buy": {"tool_name": "mcp__robinhood-trading__place_equity_order", "tool_input": {"symbol": "AAPL", "side": "buy", "quantity": 3}, "permission_mode": "bypassPermissions"},
+  "headless_read": {"tool_name": "mcp__robinhood-trading__get_portfolio", "tool_input": {}, "permission_mode": "bypassPermissions"}
+}

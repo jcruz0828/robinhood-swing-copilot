@@ -1,0 +1,44 @@
+{
+  "permissions": {
+    "ask": [
+      "mcp__robinhood-trading__place_equity_order",
+      "mcp__robinhood-trading__place_advanced_order",
+      "mcp__robinhood-trading__cancel_equity_order",
+      "mcp__robinhood-trading__cancel_advanced_order",
+      "mcp__robinhood-trading__cancel_option_order",
+      "mcp__robinhood-trading__cancel_crypto_order",
+      "mcp__robinhood-trading__decline_trade_approval",
+      "mcp__claude_ai_Robinhood__place_equity_order",
+      "mcp__claude_ai_Robinhood__place_advanced_order",
+      "mcp__claude_ai_Robinhood__cancel_equity_order",
+      "mcp__claude_ai_Robinhood__cancel_advanced_order",
+      "mcp__claude_ai_Robinhood__cancel_option_order",
+      "mcp__claude_ai_Robinhood__cancel_crypto_order",
+      "mcp__claude_ai_Robinhood__decline_trade_approval"
+    ],
+    "deny": [
+      "mcp__robinhood-trading__place_option_order",
+      "mcp__robinhood-trading__place_crypto_order",
+      "mcp__robinhood-trading__exercise_option",
+      "mcp__robinhood-trading__cancel_option_exercise",
+      "mcp__claude_ai_Robinhood__place_option_order",
+      "mcp__claude_ai_Robinhood__place_crypto_order",
+      "mcp__claude_ai_Robinhood__exercise_option",
+      "mcp__claude_ai_Robinhood__cancel_option_exercise"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "mcp__robinhood-trading__.*|mcp__claude_ai_Robinhood__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/order_guard.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

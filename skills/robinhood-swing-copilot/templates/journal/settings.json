@@ -1,0 +1,17 @@
+{
+  "schema": "swing-settings/1",
+  "mode": "paper",
+  "starting_equity": 10000,
+  "paper_start_date": "2026-11-19",
+  "risk_pct": 0.5,
+  "max_positions": 3,
+  "scheduled_runs": "strict",
+  "notify_email": false,
+  "chat_only_consent": false,
+  "account_mask": null,
+  "rules_version": "1.0.0",
+  "timezone": "America/New_York",
+  "saved_scan_name": "SWING-SCREEN",
+  "watchlists": {"candidates": "SWING-CANDIDATES", "open": "SWING-OPEN"},
+  "macro_event_dates": []
+}

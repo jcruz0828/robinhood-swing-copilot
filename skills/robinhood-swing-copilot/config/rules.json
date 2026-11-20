@@ -1,0 +1,109 @@
+{
+  "version": "1.0.0",
+  "_comment": "Every threshold is a starting hypothesis to validate in paper mode, not a proven edge. Rules change only in the monthly review (see references/review.md). swing.py reads this file; the SKILL never hard-codes numbers.",
+  "regime": {
+    "symbol": "SPY",
+    "sma_fast": 50,
+    "sma_slow": 200,
+    "slope_lookback": 10,
+    "vol_override_atr_pct": 2.5,
+    "vol_override_day_drop_pct": 3.0,
+    "states": {
+      "GREEN": {"max_positions": 6, "risk_mult": 1.0, "max_heat_pct": 6.0, "new_entries": true},
+      "YELLOW": {"max_positions": 3, "risk_mult": 0.5, "max_heat_pct": 3.0, "new_entries": true},
+      "RED": {"max_positions": 0, "risk_mult": 0.0, "max_heat_pct": 0.0, "new_entries": false}
+    }
+  },
+  "screen": {
+    "min_price": 10.0,
+    "min_avg_volume_50": 1000000,
+    "min_market_cap": 2000000000,
+    "atr_pct_min": 1.0,
+    "atr_pct_max": 8.0,
+    "min_bars": 250,
+    "exclude_leveraged_etfs": true,
+    "max_shortlist": 25
+  },
+  "entry": {
+    "rsi_period": 14,
+    "rsi_pullback_max": 45.0,
+    "pullback_lookback": 5,
+    "trigger_offset": 0.01,
+    "limit_offset_atr": 0.5,
+    "max_gap_above_trigger_pct": 2.0,
+    "max_gap_above_trigger_atr": 1.0,
+    "no_entry_first_minutes": 15,
+    "min_rr_at_live_price": 1.5
+  },
+  "sizing": {
+    "risk_pct_default": 0.5,
+    "atr_period": 14,
+    "stop_atr_mult": 2.0,
+    "swing_low_lookback": 5,
+    "swing_low_buffer": 0.99,
+    "max_position_pct": 10.0,
+    "whole_shares_only": true
+  },
+  "exits": {
+    "target_r": 2.0,
+    "breakeven_at_r": 1.0,
+    "sma_exit": 20,
+    "sma_exit_min_days": 2,
+    "time_stop_days": 15,
+    "time_stop_min_r": 1.0,
+    "stop_move_min_atr": 0.25,
+    "stops_only_move_up": true
+  },
+  "portfolio": {
+    "max_sector_pct": 30.0,
+    "max_names_per_sector": 2,
+    "max_gross_pct": 80.0,
+    "max_correlation": 0.8,
+    "correlation_lookback": 60,
+    "reentry_cooldown_trading_days": 10,
+    "revenge_window_hours": 24
+  },
+  "breakers": {
+    "daily_loss_pct": 2.0,
+    "weekly_loss_pct": 5.0,
+    "monthly_loss_pct": 8.0,
+    "losing_streak": 2,
+    "cooldown_hours": 24,
+    "post_streak_risk_mult": 0.5,
+    "peak_drawdown_lock_pct": 15.0
+  },
+  "events": {
+    "earnings_buffer_trading_days": 2,
+    "block_unknown_earnings": true,
+    "block_macro_event_days": true
+  },
+  "consent": {
+    "code_length": 8,
+    "reprice_atr": 0.5,
+    "batch_approvals": false,
+    "approve_phrase": "APPROVE",
+    "reject_phrase": "REJECT",
+    "clear_halt_phrase": "CLEAR HALT",
+    "chat_only_consent_phrase": "I ACCEPT CHAT-ONLY CONSENT"
+  },
+  "indicator_tolerance": {
+    "rsi_abs": 1.5,
+    "sma_pct": 0.5,
+    "atr_pct": 5.0
+  },
+  "paper": {
+    "slippage_pct": 0.05,
+    "stop_before_target": true
+  },
+  "graduation": {
+    "min_weeks": 4,
+    "min_closed_trades": 20,
+    "min_expectancy_r": 0.0,
+    "min_adherence_pct": 95.0
+  },
+  "rollout": {
+    "weeks_0_2": {"mode": "paper", "risk_pct": 0.5, "max_positions": 3},
+    "weeks_2_12": {"mode": "live", "risk_pct": 0.5, "max_positions": 3},
+    "month_3_plus": {"mode": "live", "risk_pct": 1.0, "max_positions": 6, "requires": "graduation criteria met in live"}
+  }
+}
