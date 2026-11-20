@@ -1,0 +1,15 @@
+{
+  "schema": "swing-state/1",
+  "updated_at": "2026-11-19T00:00:00",
+  "breaker": "TRADING_ALLOWED",
+  "peak_equity": 10000,
+  "peak_lock": false,
+  "peak_lock_since": null,
+  "consecutive_losses": 0,
+  "cooldowns": {},
+  "pending_card": null,
+  "last_code": null,
+  "approvals": [],
+  "open_trades": [],
+  "last_session": null
+}
