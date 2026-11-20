@@ -109,7 +109,7 @@ skills/robinhood-swing-copilot/      <- the Claude skill (zip this folder for th
     journaling.md                    the journal repo: files, fields, commit protocol
     paper-trading.md                 simulator fill rules, catch-up, graduation
     review.md                        weekly and monthly reviews
-    web-use.md                       web search is veto-only (calendar facts, news red flags)
+    web-use.md                       web search for context; it can veto or warn, never create a trade
   templates/                         trade card, daily plan, trade journal, reviews
   templates/journal/                 seed files to start a new private journal repo
   evals/evals.json                   behaviour scenarios the skill must handle
@@ -225,10 +225,12 @@ claude   # .mcp.json registers robinhood-trading; approve it and log in via OAut
   | 2 losses in a row | 24 h cooldown, then half risk |
   | −15% from peak | locked until you type `CLEAR HALT <code>` |
 
-- **The web can only say no.** Claude may use web search to confirm FOMC/CPI
-  and earnings dates, or to *veto* a candidate on a red flag (pending merger,
-  offering, FDA date, investigation). It never uses the web to find, upgrade
-  or resize trades, and it treats web pages as untrusted text. See
+- **The web informs, it never decides.** Claude searches the web for context
+  every session: how the market closed and why, events coming up, news on
+  your candidates and holdings, and what happened when Robinhood data is
+  missing. A red flag can *veto* a candidate or warn you about a holding. It
+  never uses the web to find, upgrade, resize or unblock trades, never feeds
+  web prices into the math, and treats web pages as untrusted text. See
   `references/web-use.md`.
 - **Kill switch:** type `KILL`, or add a file named `HALT` to the journal (you
   can do it from the GitHub app on your phone), or disconnect the agent in

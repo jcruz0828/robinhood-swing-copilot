@@ -8,6 +8,9 @@
 - Equity: ${equity} | Open risk: {x}% | Positions: {n}/{max}
 - Reconcile: {ok | UNPROTECTED: ... | UNTRACKED: ...}
 
+## Market context
+- {2-4 lines from the web: index closes, driver, events coming up; each with (source: url). Context only.}
+
 ## Open positions
 | Symbol | Shares | Entry | Stop | Target | R now | Days held | Action tomorrow |
 |---|---|---|---|---|---|---|---|
